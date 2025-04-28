@@ -4,15 +4,15 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 const usuarios = [
-  { usuario: 'usuario1@greenpark.com', password: 'Password123!', nombre: 'Juan Pérez', boleto: 'A123' },
-  { usuario: 'usuario2@greenpark.com', password: 'Password456!', nombre: 'Ana López', boleto: 'B456' },
+  { email: 'usuario1@greenpark.com', password: 'Password123!', nombre: 'Juan Pérez', boleto: 'A123' },
+  { email: 'usuario2@greenpark.com', password: 'Password456!', nombre: 'Ana López', boleto: 'B456' },
   // Agrega más usuarios aquí si quieres
 ];
 
 export default function LoginPage() {
   const router = useRouter();
   
-  const [usuario, setUsuario] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
@@ -21,7 +21,7 @@ export default function LoginPage() {
     setError('');
 
     const usuarioEncontrado = usuarios.find(
-      (u) => u.usuario === usuario && u.password === password
+      (u) => u.email === email && u.password === password
     );
 
     if (usuarioEncontrado) {
@@ -43,9 +43,9 @@ export default function LoginPage() {
           <div>
             <label className="block text-sm mb-1">Correo electrónico</label>
             <input 
-              type="usuario" 
-              value={usuario} 
-              onChange={(e) => setUsuario(e.target.value)}
+              type="email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full p-2 bg-gray-600 rounded-md text-white"
               required 
             />
